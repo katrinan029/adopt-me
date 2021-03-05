@@ -1,0 +1,79 @@
+"use strict";
+
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _react = _interopRequireWildcard(require("react"));
+
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/useDropdown.js",
+      _s = $RefreshSig$();
+
+  function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+  function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+  const useDropdown = (label, defaultState, options) => {
+    _s();
+
+    const [state, setState] = (0, _react.useState)(defaultState);
+    const id = `use-drop-down-${label.replace(" ", "").toLowerCase()}`;
+
+    const Dropdown = () => /*#__PURE__*/_react.default.createElement("label", {
+      htmlFor: id,
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6,
+        columnNumber: 5
+      }
+    }, label, /*#__PURE__*/_react.default.createElement("select", {
+      id: id,
+      value: state,
+      onChange: event => setState(event.target.value),
+      onBlur: event => setState(event.target.value),
+      disabled: options.length === 0,
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 7
+      }
+    }, /*#__PURE__*/_react.default.createElement("option", {
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 9
+      }
+    }, "All"), options.map(item => /*#__PURE__*/_react.default.createElement("option", {
+      key: item,
+      value: item,
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 11
+      }
+    }, item))));
+
+    return [state, Dropdown, setState];
+  };
+
+  _s(useDropdown, "zRSPpjY2QwRIrw/324ZNGls6hJ8=");
+
+  var _default = useDropdown;
+  exports.default = _default;
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
