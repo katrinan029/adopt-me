@@ -1,0 +1,68 @@
+"use strict";
+
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.Results = void 0;
+
+  var _react = _interopRequireDefault(require("react"));
+
+  var _Pet = _interopRequireDefault(require("./Pet"));
+
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/Results.js";
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  const Results = ({
+    pets
+  }) => {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "search",
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6,
+        columnNumber: 5
+      }
+    }, pets.length === 0 ? /*#__PURE__*/_react.default.createElement("h1", {
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 9
+      }
+    }, "No Pets Found") : pets.map(pet => /*#__PURE__*/_react.default.createElement(_Pet.default, {
+      animal: pet.type,
+      key: pet.id,
+      name: pet.name,
+      breed: pet.breeds.primary,
+      media: pet.photos,
+      location: `${pet.contact.address.city}, ${pet.contact.address.state}`,
+      id: pet.id,
+      __self: void 0,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11,
+        columnNumber: 11
+      }
+    })));
+  };
+
+  exports.Results = Results;
+  _c = Results;
+
+  var _c;
+
+  $RefreshReg$(_c, "Results");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
