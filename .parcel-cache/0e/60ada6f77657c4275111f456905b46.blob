@@ -1,0 +1,101 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _frontendmastersPet = require("@frontendmasters/pet");
+  var _frontendmastersPetDefault = _parcelHelpers.interopDefault(_frontendmastersPet);
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/Details.js";
+  class Details extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        loading: true
+      };
+    }
+    componentDidMount() {
+      _frontendmastersPetDefault.default.animal(this.props.id).then(({animal}) => {
+        this.setState({
+          name: animal.name,
+          animal: animal,
+          type,
+          location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
+          description: animal.description,
+          media: animal.photos,
+          breed: animal.breeds.primary,
+          loading: false
+        });
+      }, console.error);
+    }
+    render() {
+      if (this.state.loading) {
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("h1", {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 29,
+              columnNumber: 14
+            }
+          }, "loading ...")
+        );
+      }
+      const {animal, breed, location, description, name} = this.state;
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "details",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 35,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 37,
+            columnNumber: 11
+          }
+        }, name), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 38,
+            columnNumber: 11
+          }
+        }, `${animal} - ${breed} - ${location}`), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 39,
+            columnNumber: 11
+          }
+        }, "Adopt ", name), /*#__PURE__*/_reactDefault.default.createElement("p", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40,
+            columnNumber: 11
+          }
+        }, description)))
+      );
+    }
+  }
+  exports.default = Details;
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

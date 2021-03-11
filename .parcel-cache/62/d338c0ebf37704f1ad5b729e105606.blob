@@ -1,0 +1,88 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/Carousel.js";
+  class Carousel extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        photos: [],
+        active: 0
+      };
+    }
+    /*state = {loading: true}*/
+    /*state = {*/
+    /*photos: [],*/
+    /*active: 0,*/
+    /*};*/
+    static getDerivedStateFromProps({media}) {
+      let photos = ["http://placecorgi.com/600/600"];
+      if (media.length) {
+        photos = media.map(({large}) => large);
+      }
+      return {
+        photos
+      };
+    }
+    handleIndexClick(event) {
+      this.setState({
+        active: +event.target.dataset.index
+      });
+    }
+    render() {
+      const {photos, active} = this.state;
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "carousel",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 38,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("img", {
+          src: photos[active],
+          alt: "animal",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 39,
+            columnNumber: 9
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "carousel-smaller",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40,
+            columnNumber: 9
+          }
+        }, photos.map((photo, index) => /*#__PURE__*/_reactDefault.default.createElement("img", {
+          key: photo,
+          onClick: this.handleIndexClick.bind(this),
+          "data-index": index,
+          src: photo,
+          className: index === active ? "active" : "",
+          alt: "animal thumbnail",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 42,
+            columnNumber: 13
+          }
+        }))))
+      );
+    }
+  }
+  exports.default = Carousel;
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
