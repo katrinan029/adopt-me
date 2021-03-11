@@ -1,0 +1,126 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _frontendmastersPet = require("@frontendmasters/pet");
+  var _frontendmastersPetDefault = _parcelHelpers.interopDefault(_frontendmastersPet);
+  var _Results = require("./Results");
+  var _ResultsDefault = _parcelHelpers.interopDefault(_Results);
+  var _useDropdown = require("./useDropdown");
+  var _useDropdownDefault = _parcelHelpers.interopDefault(_useDropdown);
+  var _ThemeContext = require("./ThemeContext");
+  var _ThemeContextDefault = _parcelHelpers.interopDefault(_ThemeContext);
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/SearchParams.js", _s = $RefreshSig$();
+  const SearchParams = () => {
+    _s();
+    const [location, setLocation] = _react.useState("Seattle, WA");
+    const [breeds, setBreeds] = _react.useState([]);
+    const [animal, AnimalDropdown] = _useDropdownDefault.default("Animal", "dog", _frontendmastersPet.ANIMALS);
+    const [breed, BreedDropdown, setBreed] = _useDropdownDefault.default("Breed", "", breeds);
+    const [pets, setPets] = _react.useState([]);
+    const [theme] = _react.useContext(_ThemeContextDefault.default);
+    async function requestPets() {
+      const {animals} = await _frontendmastersPetDefault.default.animals({
+        location,
+        breed,
+        type: animal
+      });
+      setPets(animals || []);
+    }
+    // get new set of breeds on change
+    _react.useEffect(() => {
+      setBreeds([]);
+      setBreed("");
+      _frontendmastersPetDefault.default.breeds(animal).then(({breeds}) => {
+        const breedStrings = breeds.map(({name}) => name);
+        setBreeds(breedStrings);
+      }, console.error);
+    }, [animal, setBreed, setBreeds]);
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "search-params",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("form", {
+        onSubmit: e => {
+          e.preventDefault();
+          requestPets();
+        },
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38,
+          columnNumber: 7
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("label", {
+        htmlFor: "location",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44,
+          columnNumber: 9
+        }
+      }, "Location", /*#__PURE__*/_reactDefault.default.createElement("input", {
+        id: "location",
+        value: location,
+        placeholder: "Location",
+        onChange: event => setLocation(event.target.value),
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46,
+          columnNumber: 11
+        }
+      })), /*#__PURE__*/_reactDefault.default.createElement(AnimalDropdown, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53,
+          columnNumber: 9
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(BreedDropdown, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54,
+          columnNumber: 9
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55,
+          columnNumber: 9
+        }
+      }, "Submit")), /*#__PURE__*/_reactDefault.default.createElement(_ResultsDefault.default, {
+        pets: pets,
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57,
+          columnNumber: 7
+        }
+      }))
+    );
+  };
+  _s(SearchParams, "4kD7kKW1kxr7dfeMFv3JXKHXXz0=", false, function () {
+    return [_useDropdownDefault.default, _useDropdownDefault.default];
+  });
+  _c = SearchParams;
+  exports.default = SearchParams;
+  var _c;
+  $RefreshReg$(_c, "SearchParams");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

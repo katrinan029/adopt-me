@@ -1,0 +1,170 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _frontendmastersPet = require("@frontendmasters/pet");
+  var _frontendmastersPetDefault = _parcelHelpers.interopDefault(_frontendmastersPet);
+  var _reachRouter = require("@reach/router");
+  require("./Modal");
+  var _Carousel = require("./Carousel");
+  var _CarouselDefault = _parcelHelpers.interopDefault(_Carousel);
+  var _ErrorBoundaryJs = require("./ErrorBoundary.js");
+  var _ErrorBoundaryJsDefault = _parcelHelpers.interopDefault(_ErrorBoundaryJs);
+  var _ThemeContext = require("./ThemeContext");
+  var _ThemeContextDefault = _parcelHelpers.interopDefault(_ThemeContext);
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/Details.js";
+  function _extends() {
+    _extends = Object.assign || (function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    });
+    return _extends.apply(this, arguments);
+  }
+  class Details extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        loading: true,
+        showModal: false
+      };
+    }
+    componentDidMount() {
+      _frontendmastersPetDefault.default.animal(this.props.id).then(({animal}) => {
+        this.setState({
+          url: animal.url,
+          name: animal.name,
+          animal: animal.type,
+          location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
+          description: animal.description,
+          media: animal.photos,
+          breed: animal.breeds.primary,
+          loading: false
+        });
+      }, console.error);
+    }
+    toggleModal() {
+      return this.setState(this.state.showModal = true);
+    }
+    adopt() {
+      return _reachRouter.navigate(this.state.url);
+    }
+    render() {
+      if (this.state.loading) {
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("h1", {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 41,
+              columnNumber: 14
+            }
+          }, "loading ...")
+        );
+      }
+      const {animal, breed, location, description, name, media} = this.state;
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "details",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 47,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_CarouselDefault.default, {
+          media: media,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 48,
+            columnNumber: 9
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 49,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 50,
+            columnNumber: 11
+          }
+        }, name), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51,
+            columnNumber: 11
+          }
+        }, `${animal} - ${breed} - ${location}`), /*#__PURE__*/_reactDefault.default.createElement(_ThemeContextDefault.default.Consumer, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 52,
+            columnNumber: 11
+          }
+        }, themeHook => /*#__PURE__*/_reactDefault.default.createElement("button", {
+          style: {
+            backgroundColor: themeHook[0]
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 54,
+            columnNumber: 15
+          }
+        }, "Adopt ", name)), /*#__PURE__*/_reactDefault.default.createElement("p", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60,
+            columnNumber: 11
+          }
+        }, description)))
+      );
+    }
+  }
+  function DetailsWithErrorBoundary(props) {
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement(_ErrorBoundaryJsDefault.default, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(Details, _extends({}, props, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 70,
+          columnNumber: 7
+        }
+      })))
+    );
+  }
+  exports.default = DetailsWithErrorBoundary;
+  _c = DetailsWithErrorBoundary;
+  var _c;
+  $RefreshReg$(_c, "DetailsWithErrorBoundary");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -1,0 +1,44 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactDom = require("react-dom");
+  var _jsxFileName = "/Users/sherman/Desktop/adopt-me/src/Modal.js", _s = $RefreshSig$();
+  const Modal = ({children}) => {
+    _s();
+    const elRef = _react.useRef(null);
+    if (!elRef.current) {
+      const div = document.createElement("div");
+      elRef.current = div;
+    }
+    _react.useEffect(() => {
+      const modalRoot = document.getElementById("modal");
+      modalRoot.appendChild(elRef.current);
+      return () => modalRoot.removeChild(elRef.current);
+    }, []);
+    return (
+      /*#__PURE__*/_reactDom.createPortal(/*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18,
+          columnNumber: 23
+        }
+      }, children), elRef.current)
+    );
+  };
+  _s(Modal, "uS4DrwVCzH44ayWi2jMWCV+OL1E=");
+  _c = Modal;
+  exports.default = Modal;
+  var _c;
+  $RefreshReg$(_c, "Modal");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
